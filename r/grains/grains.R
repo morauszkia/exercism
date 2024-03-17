@@ -5,5 +5,6 @@ square <- function(n) {
 }
 
 total <- function() {
-  -(1-2^64)
+  # based on formula for sum of the first n terms of a geometric series (rearranged)
+  -(1-2^64) 
 }

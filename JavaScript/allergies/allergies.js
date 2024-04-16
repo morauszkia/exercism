@@ -4,15 +4,26 @@
 //
 
 export class Allergies {
-  constructor() {
-    throw new Error('Remove this statement and implement this function');
+  ALLERGENS = [
+    'eggs',
+    'peanuts',
+    'shellfish',
+    'strawberries',
+    'tomatoes',
+    'chocolate',
+    'pollen',
+    'cats',
+  ];
+
+  constructor(score) {
+    this.allergies = this.ALLERGENS.filter((_, index) => score & (1 << index));
   }
 
   list() {
-    throw new Error('Remove this statement and implement this function');
+    return this.allergies;
   }
 
-  allergicTo() {
-    throw new Error('Remove this statement and implement this function');
+  allergicTo(allergen) {
+    return this.allergies.includes(allergen);
   }
 }

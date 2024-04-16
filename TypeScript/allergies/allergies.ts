@@ -1,13 +1,30 @@
+const ALLERGENS = [
+  'eggs',
+  'peanuts',
+  'shellfish',
+  'strawberries',
+  'tomatoes',
+  'chocolate',
+  'pollen',
+  'cats',
+] as const;
+
+type Allergen = (typeof ALLERGENS)[number];
+
 export class Allergies {
-  constructor(allergenIndex: unknown) {
-    throw new Error('Remove this statement and implement this function')
+  allergies: Allergen[];
+
+  constructor(allergenIndex: number) {
+    this.allergies = ALLERGENS.filter(
+      (_, index) => allergenIndex & (1 << index)
+    );
   }
 
-  public list(): unknown {
-    throw new Error('Remove this statement and implement this function')
+  public list(): Allergen[] {
+    return this.allergies;
   }
 
-  public allergicTo(allergen: unknown): unknown {
-    throw new Error('Remove this statement and implement this function')
+  public allergicTo(allergen: Allergen): boolean {
+    return this.allergies.includes(allergen);
   }
 }

@@ -1,4 +1,8 @@
 {
+  "parser": "@babel/eslint-parser",
+  "babelOptions": {
+    "configFile": "./babel.config.js"
+  },
   "root": true,
   "extends": "@exercism/eslint-config-javascript",
   "env": {

@@ -1,8 +1,23 @@
-//
-// This is only a SKELETON file for the 'Pig Latin' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
+export const translate = (phrase) =>
+  phrase
+    .split(" ")
+    .map((word) => translateWord(word))
+    .join(" ");
 
-export const translate = () => {
-  throw new Error('Remove this statement and implement this function');
+const translateWord = (original) => {
+  // Starts with vowel or 'xr' or 'yt'
+  let match = original.match(/^([aeiou]|xr|yt)/);
+  if (match) return original + "ay";
+
+  // Handle 'qu'
+  match = original.match(/^(.*qu)(.*)/);
+  if (match) return match[2] + match[1] + "ay";
+
+  // Handle 'y'
+  match = original.match(/^([^aeiou]+)(y.*)/);
+  if (match) return match[2] + match[1] + "ay";
+
+  // Handle rest
+  match = original.match(/(^[^aeiou]+)(.*)/);
+  if (match) return match[2] + match[1] + "ay";
 };

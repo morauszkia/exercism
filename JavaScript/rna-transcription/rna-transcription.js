@@ -1,8 +1,13 @@
-//
-// This is only a SKELETON file for the 'RNA Transcription' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
+export const toRna = (dna) => {
+  return [...dna].reduce(
+    (rna, nucleotide) => rna + dnaToRnaDict[nucleotide],
+    ""
+  );
+};
 
-export const toRna = () => {
-  throw new Error('Remove this statement and implement this function');
+const dnaToRnaDict = {
+  G: "C",
+  C: "G",
+  T: "A",
+  A: "U",
 };

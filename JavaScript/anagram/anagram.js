@@ -1,8 +1,16 @@
-//
-// This is only a SKELETON file for the 'Anagram' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
+export const findAnagrams = (subject, potentialAnagrams) => {
+  return potentialAnagrams.filter((candidate) => isAnagram(candidate, subject));
+};
 
-export const findAnagrams = () => {
-  throw new Error('Remove this statement and implement this function');
+const isAnagram = (word1, word2) => {
+  const lowerCaseWord1 = word1.toLowerCase();
+  const lowercaseWord2 = word2.toLowerCase();
+  return (
+    lowerCaseWord1 !== lowercaseWord2 &&
+    sortedLetters(lowerCaseWord1) === sortedLetters(lowercaseWord2)
+  );
+};
+
+const sortedLetters = (word) => {
+  return [...word].sort().join();
 };

@@ -1,18 +1,26 @@
-//
-// This is only a SKELETON file for the 'Grade School' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 export class GradeSchool {
+  constructor() {
+    this._names = {};
+  }
+
   roster() {
-    throw new Error('Remove this statement and implement this function');
+    const roster = {};
+    for (const [name, grade] of Object.entries(this._names)) {
+      roster[grade] = roster[grade] ? [...roster[grade], name] : [name];
+    }
+
+    for (const grade in roster) {
+      roster[grade].sort();
+    }
+
+    return roster;
   }
 
-  add() {
-    throw new Error('Remove this statement and implement this function');
+  add(name, grade) {
+    this._names[name] = grade;
   }
 
-  grade() {
-    throw new Error('Remove this statement and implement this function');
+  grade(grade) {
+    return this.roster()[grade] || [];
   }
 }

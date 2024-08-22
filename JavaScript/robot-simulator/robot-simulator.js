@@ -1,29 +1,59 @@
-//
-// This is only a SKELETON file for the 'Robot Simulator' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 export class InvalidInputError extends Error {
   constructor(message) {
     super();
-    this.message = message || 'Invalid Input';
+    this.message = message || "Invalid Input";
   }
 }
 
+const DIRECTIONS = ["north", "east", "south", "west"];
+
 export class Robot {
+  #bearing = "north";
+  #x = 0;
+  #y = 0;
+
   get bearing() {
-    throw new Error('Remove this statement and implement this function');
+    return this.#bearing;
   }
 
   get coordinates() {
-    throw new Error('Remove this statement and implement this function');
+    return [this.#x, this.#y];
   }
 
   place({ x, y, direction }) {
-    throw new Error('Remove this statement and implement this function');
+    if (!DIRECTIONS.includes(direction)) {
+      throw new InvalidInputError();
+    }
+
+    this.#x = x;
+    this.#y = y;
+    this.#bearing = direction;
+  }
+
+  turn(direction) {
+    const oldBearing = DIRECTIONS.indexOf(this.bearing);
+    const newBearing =
+      DIRECTIONS[(oldBearing + (direction === "R" ? 1 : -1) + 4) % 4];
+
+    this.#bearing = newBearing;
+  }
+
+  advance() {
+    const change = this.bearing === "north" || this.bearing === "east" ? 1 : -1;
+    if (this.bearing === "north" || this.bearing === "south") {
+      this.#y += change;
+    } else {
+      this.#x += change;
+    }
   }
 
   evaluate(instructions) {
-    throw new Error('Remove this statement and implement this function');
+    [...instructions].forEach((instructionCode) => {
+      if (instructionCode === "A") {
+        this.advance();
+      } else {
+        this.turn(instructionCode);
+      }
+    });
   }
 }

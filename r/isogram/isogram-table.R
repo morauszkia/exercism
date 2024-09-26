@@ -5,5 +5,5 @@ is_isogram <- function(word) {
     strsplit("") |> 
     unlist()
   
-  return(length(chars) == length(unique(chars))) 
+  return(all(table(chars) <= 1)) 
 }

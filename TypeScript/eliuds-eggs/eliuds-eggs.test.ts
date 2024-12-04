@@ -8,19 +8,19 @@ describe('EliudsEggs', () => {
     expect(actual).toEqual(expected)
   })
 
-  xit('1 egg', () => {
+  it('1 egg', () => {
     const expected = 1
     const actual = eggCount(16)
     expect(actual).toEqual(expected)
   })
 
-  xit('4 eggs', () => {
+  it('4 eggs', () => {
     const expected = 4
     const actual = eggCount(89)
     expect(actual).toEqual(expected)
   })
 
-  xit('13 eggs', () => {
+  it('13 eggs', () => {
     const expected = 13
     const actual = eggCount(2000000000)
     expect(actual).toEqual(expected)

@@ -4,3 +4,4 @@
 .Ruserdata
 .yarn
 node_modules
+*.pyc
